@@ -41,7 +41,7 @@ set colorcolumn=100
 set backupcopy=yes
 colo seoul256
 let mapleader=','
-nnoremap <leader>r :so $HOME/.vimrc<CR>
+nnoremap <leader>r :so $HOME/.vim/vimrc<CR>
 nnoremap <leader>n :noh<CR>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
