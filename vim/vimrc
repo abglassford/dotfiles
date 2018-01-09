@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'kevindurb/vim-splits'
 Plug 'kevindurb/vim-quicksilver'
@@ -13,6 +12,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'joonty/vdebug'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
 call plug#end()
 let g:ctrlp_root_markers = [
 \ 'package.json',
@@ -28,6 +29,7 @@ let g:lightline = {
 \ 'colorscheme': 'seoul256',
 \}
 let g:seoul256_background = 239
+set mouse=a
 set clipboard=unnamed
 set number
 set background=dark
@@ -51,6 +53,7 @@ inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
+map <C-p> :Files<CR>
 map <Leader>dc :call ToggleVDebugOption('continuous_mode')<CR>
 map <Leader>db :call ToggleVDebugOption('break_on_open')<CR>
 set tags=.tags;/ " Start in :pwd and search up for a tags file
@@ -77,5 +80,5 @@ function! ToggleVDebugOption(opt)
   endif
 endfunction
 
-
-
+filetype plugin on
+autocmd FileType php setl sw=4 sts=4 ts=4 noet cc=120
