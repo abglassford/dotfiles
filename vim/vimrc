@@ -8,12 +8,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-vinegar'
 Plug 'moll/vim-node'
-Plug 'junegunn/seoul256.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'joonty/vdebug'
-Plug 'itchyny/lightline.vim'
+Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
+Plug 'crusoexia/vim-monokai'
 call plug#end()
 let g:ctrlp_root_markers = [
 \ 'package.json',
@@ -26,14 +26,15 @@ let g:ale_linters = {
 \ 'javascript jsx': ['eslint'],
 \}
 let g:lightline = {
-\ 'colorscheme': 'seoul256',
+\ 'colorscheme': 'monokai',
 \}
-let g:seoul256_background = 239
+colorscheme monokai
 set mouse=a
 set clipboard=unnamed
 set number
 set background=dark
 set cursorline
+set noswapfile
 set hlsearch
 set ignorecase
 set smartcase
@@ -41,7 +42,14 @@ set relativenumber
 set nowrap
 set colorcolumn=100
 set backupcopy=yes
-colo seoul256
+set t_Co=256
+set statusline=
+set statusline+=%-3.3n           " Buffer number
+set statusline+=%f               " File name
+set statusline+=%h%m%r%w        " Status flags
+set statusline+=%=             " Right align remainder
+set statusline+=%-14(%l,%c%V%) " Line, column
+set statusline+=%<%P           " File position
 let mapleader=','
 nnoremap <leader>r :so $HOME/.vim/vimrc<CR>
 nnoremap <leader>n :noh<CR>
@@ -80,5 +88,9 @@ function! ToggleVDebugOption(opt)
   endif
 endfunction
 
+if executable('ag')
+    let grackprg = 'ag --vimgrep'
+endif
 filetype plugin on
-autocmd FileType php setl sw=4 sts=4 ts=4 noet cc=120
+autocmd FileType php setl sw=4 sts=4 ts=4 et cc=120
+let g:ale_php_phpcs_standard = '--standard=src/phpcs_ruleset.xml'
