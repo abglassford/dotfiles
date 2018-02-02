@@ -13,7 +13,7 @@ Plug 'joonty/vdebug'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
-Plug 'crusoexia/vim-monokai'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 let g:ctrlp_root_markers = [
 \ 'package.json',
@@ -25,10 +25,8 @@ let g:ale_linters = {
 \ 'javascript': ['eslint'],
 \ 'javascript jsx': ['eslint'],
 \}
-let g:lightline = {
-\ 'colorscheme': 'monokai',
-\}
-colorscheme monokai
+let base16colorspace=256
+colorscheme base16-material-darker
 set mouse=a
 set clipboard=unnamed
 set number
@@ -42,7 +40,6 @@ set relativenumber
 set nowrap
 set colorcolumn=100
 set backupcopy=yes
-set t_Co=256
 set statusline=
 set statusline+=%-3.3n           " Buffer number
 set statusline+=%f               " File name
@@ -50,6 +47,7 @@ set statusline+=%h%m%r%w        " Status flags
 set statusline+=%=             " Right align remainder
 set statusline+=%-14(%l,%c%V%) " Line, column
 set statusline+=%<%P           " File position
+set termguicolors
 let mapleader=','
 nnoremap <leader>r :so $HOME/.vim/vimrc<CR>
 nnoremap <leader>n :noh<CR>
@@ -81,7 +79,7 @@ let g:vdebug_features['max_children'] = 1024
 function! ToggleVDebugOption(opt)
   if g:vdebug_options[a:opt] == 0
     let g:vdebug_options[a:opt] = 1
-    echo 'VDebug ' . a:opt . ': On'
+matarial    echo 'VDebug ' . a:opt . ': On'
   else
     let g:vdebug_options[a:opt] = 0
     echo 'VDebug ' . a:opt . ': Off'
