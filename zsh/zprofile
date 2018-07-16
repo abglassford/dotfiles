@@ -2,4 +2,4 @@
 
 # Added by docker rebuild Fri Nov 10 08:18:13 MST 2017
 source ~/Dropbox\ \(CCBHQ\)/Docker/.docker_helpers
-
+export SKIP_RESOURCES=true
