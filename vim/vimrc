@@ -28,7 +28,7 @@ let g:ale_linters = {
 \}
 let base16colorspace=256
 colorscheme codedark
-set mouse=a
+set mouse=c
 set clipboard=unnamed
 set number
 set background=dark
